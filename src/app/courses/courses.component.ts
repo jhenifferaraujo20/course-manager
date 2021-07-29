@@ -10,6 +10,8 @@ import { CourseService } from './course.service';
 })
 export class CoursesComponent implements OnInit {
   courses: Course[] = [];
+  
+  _filterBy!: string;
 
   constructor(private courseService: CourseService) { }
 
@@ -19,6 +21,14 @@ export class CoursesComponent implements OnInit {
 
   getCourses(): void {
     this.courseService.getCourses().subscribe(courses => this.courses = courses);
+  }
+
+  set filter(value: string) {
+    this._filterBy = value;
+  }
+
+  get filter() {
+    return this._filterBy;
   }
 
 }
