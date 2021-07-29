@@ -16,4 +16,9 @@ export class CourseService {
     const courses = of(COURSES);
     return courses;
   }
+
+  getCourse(id: number): Observable<Course> {
+    const course = COURSES.find(c => c.id === id)!;
+    return of(course);
+  }
 }
